@@ -40,6 +40,10 @@ public class CategoriaDAO extends ConexionDB{
 
     }//FIN DE METODO insertarCatgeria
 
+    /**
+     * Buscar categorias
+     * @return lista de categorias.
+     */
 
     public ArrayList<Categoria> buscarTodasLasCategorias(){
         Connection connection = null;
