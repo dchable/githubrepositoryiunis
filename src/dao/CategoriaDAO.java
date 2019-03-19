@@ -40,6 +40,7 @@ public class CategoriaDAO extends ConexionDB{
 
     }//FIN DE METODO insertarCatgeria
 
+    
     /**
      * Buscar categorias
      * @return lista de categorias.
