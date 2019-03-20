@@ -42,7 +42,7 @@ public class CategoriaDAO extends ConexionDB{
 
     
     /**
-     * Buscar categorias
+     * Metodo que Buscar categorias
      * @return lista de categorias.
      */
 
