@@ -86,4 +86,8 @@ public class CategoriaDAO extends ConexionDB{
     }
 
 
+    public void buscarCategoriaPorInicial(String inicial){
+
+    }
+
 }

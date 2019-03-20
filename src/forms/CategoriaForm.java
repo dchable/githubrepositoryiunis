@@ -6,6 +6,7 @@ import controller.CategoriaController;
 import forms.KeyForms.MPredVentKey;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,8 @@ public class CategoriaForm extends JFrame {
     private JLabel lblCategoria;
     private JButton btnGuardarCategoria;
     private JButton btnBuscarCategoria;
+    private JTable tblCategorias;
+    private JScrollPane jscCategorias;
 
     public CategoriaForm(){
 
@@ -46,6 +49,11 @@ public class CategoriaForm extends JFrame {
         add(btnBuscarCategoria);
 
 
+        jscCategorias = new JScrollPane();
+        jscCategorias.setBounds(400,300,400,400);
+        add(jscCategorias);
+
+
         btnGuardarCategoria.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,8 +77,17 @@ public class CategoriaForm extends JFrame {
         btnBuscarCategoria.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DefaultTableModel modelo = new DefaultTableModel();
+                tblCategorias = new JTable();
+                tblCategorias.setModel(modelo);
+
+
                 CategoriaController categoriaController = new CategoriaController();
                 categoriaController.mostrarCategorias();
+
+                categoriaController.busquedaCategorias(modelo);
+                jscCategorias.setViewportView(tblCategorias);
+
 
             }
         });

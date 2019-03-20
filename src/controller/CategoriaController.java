@@ -4,6 +4,7 @@ import Entidades.Categoria;
 import Services.CategoriaService;
 import Services.CategoriaServiceImpl;
 
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,6 +17,12 @@ public class CategoriaController{
         categoriaService.crearCategoria(categoria);
     }
 
+
+    /**
+     * Metodo que muestra las categorias
+     *
+     */
+
     public void mostrarCategorias(){
         CategoriaService categoriaService = new CategoriaServiceImpl();
         ArrayList<Categoria> mostrarLaLista = categoriaService.buscarCategorias();
@@ -25,6 +32,26 @@ public class CategoriaController{
             System.out.println("elementoLista = " + elementoLista.getDescripcion());
         }
 
+    }
+
+
+    public void busquedaCategorias(DefaultTableModel defaultTableModel){
+        String[] datos={};
+        String[] nombreColumnas = {"ID", "DESCRIPCION"};
+
+
+        for (String nombreColumna : nombreColumnas) {
+            defaultTableModel.addColumn(nombreColumna);
+        }
+
+
+        CategoriaService categoriaService = new CategoriaServiceImpl();
+        ArrayList<Categoria> mostrarLista = categoriaService.buscarCategorias();
+
+        for (Categoria categoria : mostrarLista) {
+            datos = new String[]{String.valueOf(categoria.getId()), categoria.getDescripcion()};
+            defaultTableModel.addRow(datos);
+        }
 
 
 
