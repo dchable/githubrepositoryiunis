@@ -47,25 +47,33 @@ public class CategoriaDAO extends ConexionDB{
      */
 
     public ArrayList<Categoria> buscarTodasLasCategorias(){
+       //Establecer conexion
         Connection connection = null;
+        //
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+
         String querySQL = "SELECT * FROM CATEGORIA";
-        ArrayList<Categoria> listaCegorias = new ArrayList<Categoria>();
+
+        //ES una lista
+        ArrayList<Categoria> listaCategorias = new ArrayList<Categoria>();
+
+
 
         try {
             connection = establecerConexion();
             preparedStatement = connection.prepareStatement(querySQL);
             resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-                Categoria categoria = new Categoria();
-                categoria.setId(resultSet.getInt("id"));
-                categoria.setDescripcion(resultSet.getString("descripcion"));
-                listaCegorias.add(categoria);
+           while (resultSet.next()){
+               Categoria categoria = new Categoria();
+               categoria.setId(resultSet.getInt("id"));
+               categoria.setDescripcion(resultSet.getString("descripcion"));
 
+               listaCategorias.add(categoria);
 
-            }
+           }
+
 
 
 
@@ -73,7 +81,7 @@ public class CategoriaDAO extends ConexionDB{
             System.err.println(miExepcion.getClass().getName() + "-" + miExepcion.getMessage());
         }
 
-            return listaCegorias;
+            return listaCategorias;
 
     }
 

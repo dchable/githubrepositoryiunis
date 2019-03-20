@@ -4,6 +4,9 @@ import Entidades.Categoria;
 import Services.CategoriaService;
 import Services.CategoriaServiceImpl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class CategoriaController{
 
     public void guardarCategoria(Categoria categoria){
@@ -14,6 +17,16 @@ public class CategoriaController{
     }
 
     public void mostrarCategorias(){
+        CategoriaService categoriaService = new CategoriaServiceImpl();
+        ArrayList<Categoria> mostrarLaLista = categoriaService.buscarCategorias();
+
+        for (Categoria elementoLista : mostrarLaLista) {
+            System.out.println("elementoLista = " + elementoLista.getId());
+            System.out.println("elementoLista = " + elementoLista.getDescripcion());
+        }
+
+
+
 
     }
 

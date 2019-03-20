@@ -15,6 +15,7 @@ public class CategoriaForm extends JFrame {
     private JTextField txtCategoria;
     private JLabel lblCategoria;
     private JButton btnGuardarCategoria;
+    private JButton btnBuscarCategoria;
 
     public CategoriaForm(){
 
@@ -40,6 +41,10 @@ public class CategoriaForm extends JFrame {
         btnGuardarCategoria.setBounds(50, 200, 250, 30);
         add(btnGuardarCategoria);
 
+        btnBuscarCategoria = new JButton("BUSCAR CATEGORIA");
+        btnBuscarCategoria.setBounds(50,250, 250, 30);
+        add(btnBuscarCategoria);
+
 
         btnGuardarCategoria.addActionListener(new ActionListener() {
             @Override
@@ -56,6 +61,16 @@ public class CategoriaForm extends JFrame {
 
                 limpiarCajasDeTexto();
 
+
+            }
+        });
+
+
+        btnBuscarCategoria.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CategoriaController categoriaController = new CategoriaController();
+                categoriaController.mostrarCategorias();
 
             }
         });
